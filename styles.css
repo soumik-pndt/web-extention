@@ -1,0 +1,215 @@
+/* PhisShield — Content-script tooltip styles v2.0 */
+
+/* ── Tooltip container ─────────────────────────────────────────────────── */
+.phisshield-tooltip {
+  position: absolute;
+  z-index: 2147483647;
+  width: max-content;
+  max-width: 300px;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 160ms ease, transform 160ms ease;
+  pointer-events: auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", ui-sans-serif, sans-serif;
+  color: #e6edf7;
+}
+
+.phisshield-hidden {
+  opacity: 0;
+  transform: translateY(8px) scale(0.97);
+  pointer-events: none;
+}
+
+.phisshield-no-transition { transition: none !important; }
+
+/* ── Card ──────────────────────────────────────────────────────────────── */
+.phisshield-card {
+  width: 280px;
+  padding: 13px 14px;
+  border: 1px solid rgba(141, 160, 183, 0.16);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at top left, rgba(17,199,111,0.07), transparent 35%),
+    radial-gradient(circle at top right, rgba(245,158,11,0.07), transparent 32%),
+    linear-gradient(180deg, rgba(12,17,28,0.98), rgba(6,10,20,0.98));
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 20px 48px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(255,255,255,0.03) inset;
+}
+
+/* ── Top row: chart + verdict + score ─────────────────────────────────── */
+.phisshield-top-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ── Canvas pie chart ──────────────────────────────────────────────────── */
+.phisshield-chart-wrap {
+  flex-shrink: 0;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.phisshield-chart-canvas {
+  display: block;
+  border-radius: 50%;
+}
+
+/* Score overlay inside donut hole */
+.phisshield-chart-score {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.phisshield-chart-number {
+  font-size: 14px;
+  font-weight: 800;
+  color: #f0f7ff;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+.phisshield-chart-unit {
+  font-size: 8px;
+  color: #7a96b8;
+  font-weight: 600;
+  margin-top: 1px;
+}
+
+/* ── Verdict info ──────────────────────────────────────────────────────── */
+.phisshield-verdict-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.phisshield-verdict-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px;
+  border-radius: 99px;
+  font-size: 11.5px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  letter-spacing: 0.02em;
+}
+
+.phisshield-verdict-badge.safe       { background: rgba(34,216,122,0.15); color: #22d87a; border: 1px solid rgba(34,216,122,0.25); }
+.phisshield-verdict-badge.suspicious { background: rgba(245,185,53,0.15); color: #f5b935; border: 1px solid rgba(245,185,53,0.25); }
+.phisshield-verdict-badge.malicious  { background: rgba(242,68,68,0.15);  color: #f24444; border: 1px solid rgba(242,68,68,0.25); }
+.phisshield-verdict-badge.unknown    { background: rgba(143,160,184,0.12);color: #8fa0b8; border: 1px solid rgba(143,160,184,0.2); }
+
+.phisshield-verdict-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.phisshield-verdict-badge.safe       .phisshield-verdict-dot { background: #22d87a; box-shadow: 0 0 6px #22d87a; }
+.phisshield-verdict-badge.suspicious .phisshield-verdict-dot { background: #f5b935; box-shadow: 0 0 6px #f5b935; }
+.phisshield-verdict-badge.malicious  .phisshield-verdict-dot { background: #f24444; box-shadow: 0 0 6px #f24444; }
+.phisshield-verdict-badge.unknown    .phisshield-verdict-dot { background: #8fa0b8; }
+
+/* ── Engine stats mini-row ─────────────────────────────────────────────── */
+.phisshield-engine-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.phisshield-engine-chip {
+  font-size: 9.5px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: rgba(255,255,255,0.05);
+  color: #8fa0b8;
+  white-space: nowrap;
+}
+
+.phisshield-engine-chip.mal  { color: #f87171; background: rgba(242,68,68,0.1); }
+.phisshield-engine-chip.susp { color: #fbbf24; background: rgba(245,185,53,0.1); }
+.phisshield-engine-chip.safe { color: #4ade80; background: rgba(34,216,122,0.1); }
+
+/* ── Summary ───────────────────────────────────────────────────────────── */
+.phisshield-summary {
+  all: unset;
+  display: block;
+  margin-top: 10px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: #bdd0e8;
+}
+
+/* ── Report link button ─────────────────────────────────────────────────── */
+.phisshield-report-link {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 11px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 34px;
+  border-radius: 9px;
+  background: linear-gradient(180deg, rgba(37,99,235,0.9), rgba(29,78,216,0.9));
+  color: #f0f8ff;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 120ms ease, filter 120ms ease;
+  border: 1px solid rgba(59,130,246,0.3);
+}
+
+.phisshield-report-link:hover,
+.phisshield-report-link:focus-visible {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+.phisshield-link-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ── Divider ────────────────────────────────────────────────────────────── */
+.phisshield-divider {
+  height: 1px;
+  background: rgba(148,180,220,0.1);
+  margin: 10px 0;
+}
+
+/* ── Logo in tooltip ────────────────────────────────────────────────────── */
+.phisshield-branding {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 9px;
+  padding-top: 9px;
+  border-top: 1px solid rgba(148,180,220,0.08);
+}
+
+.phisshield-logo-img {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.phisshield-brand-name {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: rgba(122,150,184,0.5);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}

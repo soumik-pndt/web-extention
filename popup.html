@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>PhisShield</title>
+  <link rel="stylesheet" href="popup.css"/>
+</head>
+<body>
+<div class="shell">
+
+  <!-- ── Header ── -->
+  <div class="header">
+    <div class="logo-wrap">
+      <img src="data:image/png;base64,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" alt="PhisShield logo"/>
+    </div>
+    <div class="header-text">
+      <h1>PhisShield</h1>
+      <p>malicious url scanner v2.0</p>
+    </div>
+    <span class="mode-pill" id="modePill">offline</span>
+  </div>
+
+  <!-- ── Manual URL Scanner ── -->
+  <div class="card">
+    <div class="card-label">🔍 Manual URL Scanner</div>
+    <label for="scanUrlInput">Paste a URL to analyse</label>
+    <div class="input-wrap">
+      <input id="scanUrlInput" type="url"
+             placeholder="https://suspicious-site.com/login"
+             autocomplete="off" spellcheck="false"/>
+      <button class="clear-btn" id="clearInputBtn" title="Clear">×</button>
+    </div>
+    <button id="scanButton" class="btn-scan" type="button">
+      <span id="scanBtnIcon">⚡</span>
+      <span id="scanBtnText">Scan URL</span>
+    </button>
+
+    <!-- Result -->
+    <div class="scan-result" id="scanResult">
+      <div class="result-card">
+        <div class="result-top">
+          <div class="chart-wrap">
+            <canvas id="resultCanvas" class="chart-canvas" width="72" height="72"></canvas>
+            <div class="chart-overlay">
+              <span class="chart-score" id="chartScore">50</span>
+              <span class="chart-unit">/100</span>
+            </div>
+          </div>
+          <div class="verdict-info">
+            <div class="verdict-badge unknown" id="verdictBadge">
+              <span class="verdict-dot"></span>
+              <span id="verdictText">Unknown</span>
+            </div>
+            <div class="engine-row" id="engineRow">
+              <span class="engine-chip mal"  id="chipMal">0 mal</span>
+              <span class="engine-chip susp" id="chipSusp">0 susp</span>
+              <span class="engine-chip safe" id="chipSafe">0 safe</span>
+            </div>
+          </div>
+        </div>
+        <p class="result-summary" id="resultSummary">Scanning…</p>
+        <a class="result-report-link hidden" id="resultLink"
+           href="#" target="_blank" rel="noopener noreferrer">
+          ↗ Open VirusTotal report
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Settings ── -->
+  <div class="card">
+    <div class="card-label">⚙️ Backend Settings</div>
+    <label for="backendBaseUrl">Backend base URL</label>
+    <div class="input-wrap">
+      <input id="backendBaseUrl" type="url" placeholder="http://localhost:3000"/>
+    </div>
+    <div class="actions">
+      <button id="saveButton"       class="btn-primary"   type="button">Save</button>
+      <button id="testButton"       class="btn-secondary" type="button">Test backend</button>
+    </div>
+    <div class="actions" style="margin-top:7px;">
+      <button id="clearCacheButton" class="btn-secondary btn-full" type="button">
+        Clear cached verdicts
+      </button>
+    </div>
+    <div class="status-line" id="statusLine" aria-live="polite"></div>
+  </div>
+
+  <!-- ── Runtime stats ── -->
+  <div class="card" style="padding:11px 13px;">
+    <div class="card-label">📊 Session Stats</div>
+    <div class="stats-row">
+      <div class="stat-item">
+        <span class="stat-value" id="statScans">—</span>
+        <span class="stat-label">scans</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value" id="statHits">—</span>
+        <span class="stat-label">cached</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value" id="statErrors">—</span>
+        <span class="stat-label">errors</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup-footer">phisshield v2.0 · powered by virustotal</div>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>
