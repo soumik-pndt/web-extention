@@ -275,7 +275,7 @@ function buildUnknown(url, reason) {
   return {
     url, verdict: 'unknown', riskScore: 50,
     summary:   reason || 'Risk could not be determined.',
-    reportUrl: `https://www.virustotal.com/gui/url/${vtUrlId(url)}`,
+    reportUrl: '',
     scannedAt: new Date().toISOString(),
     stats: null,
     source: 'fallback'

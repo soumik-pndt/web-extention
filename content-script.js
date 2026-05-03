@@ -372,8 +372,22 @@ function onAnchorEnter(event) {
 
   if (scannedResults.has(url)) {
     showTooltip(anchor, scannedResults.get(url));
+  } else {
+    // Show loading tooltip
+    const loadingResult = {
+      verdict: 'unknown',
+      riskScore: 50,
+      summary: 'Scanning…',
+      reportUrl: '',
+      stats: null
+    };
+    showTooltip(anchor, loadingResult);
+    // Request scan if not already queued
+    if (!queuedUrls.has(url)) {
+      queuedUrls.add(url);
+      requestScans([url]).catch(err => console.error('[PhisShield] requestScans error:', err));
+    }
   }
-  /* If not yet scanned, the result will auto-show when requestScans resolves */
 }
 
 function onAnchorLeave() { scheduleHide(); }
